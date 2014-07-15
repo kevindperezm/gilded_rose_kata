@@ -45,7 +45,7 @@ end
 
 def update_quality_for_item(item)
   if item.quality > 0
-    if item.name != 'Sulfuras, Hand of Ragnaros'
+    if item.name != SULFURAS_NAME
       item.quality -= 1
     end
   end
