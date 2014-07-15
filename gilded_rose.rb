@@ -52,9 +52,7 @@ def update_quality_for_item(item)
 end
 
 def update_sell_in_for(item)
-  unless legendary?(item)
-    item.sell_in -= 1
-  end
+  item.sell_in -= 1 unless legendary?(item)
   check_sell_in_constraints_for(item)
 end
 
