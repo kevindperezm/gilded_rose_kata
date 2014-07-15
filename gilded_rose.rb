@@ -4,7 +4,32 @@ PASSES_NAME = 'Backstage passes to a TAFKAL80ETC concert'
 
 def update_quality(items)
   items.each do |item|
-    if item.name != AGED_BRIE_NAME && item.name != PASSES_NAME
+    update_quality_for(item)
+    if item.name != SULFURAS_NAME
+      item.sell_in -= 1
+    end
+    if item.sell_in < 0
+      if item.name != AGED_BRIE_NAME
+        if item.name != PASSES_NAME
+          if item.quality > 0
+            if item.name != SULFURAS_NAME
+              item.quality -= 1
+            end
+          end
+        else
+          item.quality = item.quality - item.quality
+        end
+      else
+        if item.quality < 50
+          item.quality += 1
+        end
+      end
+    end
+  end
+end
+
+def update_quality_for(item)
+  if item.name != AGED_BRIE_NAME && item.name != PASSES_NAME
       if item.quality > 0
         if item.name != SULFURAS_NAME
           item.quality -= 1
@@ -27,27 +52,6 @@ def update_quality(items)
         end
       end
     end
-    if item.name != SULFURAS_NAME
-      item.sell_in -= 1
-    end
-    if item.sell_in < 0
-      if item.name != AGED_BRIE_NAME
-        if item.name != PASSES_NAME
-          if item.quality > 0
-            if item.name != SULFURAS_NAME
-              item.quality -= 1
-            end
-          end
-        else
-          item.quality = item.quality - item.quality
-        end
-      else
-        if item.quality < 50
-          item.quality += 1
-        end
-      end
-    end
-  end
 end
 
 # DO NOT CHANGE THINGS BELOW -----------------------------------------
