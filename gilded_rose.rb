@@ -4,11 +4,7 @@ SULFURAS_NAME = 'Sulfuras, Hand of Ragnaros'
 
 def update_quality(items)
   items.each do |item|
-    if item.name == AGED_BRIE_NAME || item.name == BACKSTAGE_PASSES_NAME
-      update_quality_for_antique(item)
-    else
-      update_quality_for_item(item)
-    end
+    update_quality_for(item)
     if item.name != SULFURAS_NAME
       item.sell_in -= 1
     end
@@ -29,6 +25,14 @@ def update_quality(items)
         end
       end
     end
+  end
+end
+
+def update_quality_for(item)
+  if item.name == AGED_BRIE_NAME || item.name == BACKSTAGE_PASSES_NAME
+    update_quality_for_antique(item)
+  else
+    update_quality_for_item(item)
   end
 end
 
