@@ -55,11 +55,7 @@ def check_constrainst_for(item)
       if item.name == PASSES_NAME
         item.quality = item.quality - item.quality
       else
-        if item.quality > 0
-          if item.name != SULFURAS_NAME
-            item.quality -= 1
-          end
-        end
+        update_quality_for_item(item)
       end
     end
   end
