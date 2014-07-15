@@ -46,22 +46,16 @@ def legendary?(item)
 end
 
 def apply_constraints_to(item)
-  if item.sell_in < 0
-    if item.name != AGED_BRIE_NAME
-      if item.name != PASSES_NAME
-        if item.quality > 0
-          unless legendary?(item)
-            item.quality -= 1
-          end
-        end
-      else
-        item.quality = item.quality - item.quality
-      end
-    else
-      if item.quality < 50
-        item.quality += 1
-      end
+  return unless item.sell_in < 0
+  case item.name
+  when AGED_BRIE_NAME
+    if item.quality < 50
+      item.quality += 1
     end
+  when PASSES_NAME
+    item.quality = item.quality - item.quality
+  else
+    item.quality -= 1 if item.quality > 0 && !legendary?(item)     
   end
 end
 
