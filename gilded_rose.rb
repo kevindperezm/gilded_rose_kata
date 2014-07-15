@@ -8,7 +8,7 @@ def update_quality(items)
     if item.name != 'Sulfuras, Hand of Ragnaros'
       item.sell_in -= 1
     end
-    if item.sell_in < 0
+    if has_reached_sell_date?(item)
       if item.name != "Aged Brie"
         if item.name != 'Backstage passes to a TAFKAL80ETC concert'
           if item.quality > 0
@@ -56,6 +56,10 @@ def update_quality_for(item)
       item.quality -= 1
     end
   end
+end
+
+def has_reached_sell_date?(item)
+  item.sell_in < 0
 end
 
 # DO NOT CHANGE THINGS BELOW -----------------------------------------
