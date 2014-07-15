@@ -59,8 +59,8 @@ end
 
 def check_sell_in_constraints_for(item)
   if item.sell_in < 0
-    if item.name != "Aged Brie"
-      if item.name != 'Backstage passes to a TAFKAL80ETC concert'
+    if item.name != AGED_BRIE_NAME
+      if item.name != BACKSTAGE_PASSES_NAME
         if item.quality > 0
           if item.name != 'Sulfuras, Hand of Ragnaros'
             item.quality -= 1
