@@ -39,16 +39,8 @@ def update_quality_for_item(item)
 end
 
 def update_quality_for_passes(passes)
-  if passes.sell_in < 11
-    if passes.quality < 50
-      passes.quality += 1
-    end
-  end
-  if passes.sell_in < 6
-    if passes.quality < 50
-      passes.quality += 1
-    end
-  end
+  passes.quality += 1 if passes.sell_in < 11 && passes.quality < 50
+  passes.quality += 1 if passes.sell_in < 6 && passes.quality < 50
 end
 
 def update_sell_in_for(item)
