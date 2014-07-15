@@ -7,11 +7,7 @@ def update_quality(items)
     if item.name == AGED_BRIE_NAME || item.name == BACKSTAGE_PASSES_NAME
       update_quality_for_antique(item)
     else
-      if item.quality > 0
-        if item.name != SULFURAS_NAME
-          item.quality -= 1
-        end
-      end
+      update_quality_for_item(item)
     end
     if item.name != SULFURAS_NAME
       item.sell_in -= 1
@@ -52,6 +48,10 @@ def update_quality_for_antique(item)
       end
     end
   end
+end
+
+def update_quality_for_item(item)
+  item.quality -= 1 if item.quality > 0 && item.name != SULFURAS_NAME
 end
 
 # DO NOT CHANGE THINGS BELOW -----------------------------------------
