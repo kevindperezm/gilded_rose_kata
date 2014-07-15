@@ -52,14 +52,14 @@ def check_constrainst_for(item)
     if item.name == AGED_BRIE_NAME
       update_quality_for_aged_brie(item)
     else
-      if item.name != PASSES_NAME
+      if item.name == PASSES_NAME
+        item.quality = item.quality - item.quality
+      else
         if item.quality > 0
           if item.name != SULFURAS_NAME
             item.quality -= 1
           end
         end
-      else
-        item.quality = item.quality - item.quality
       end
     end
   end
