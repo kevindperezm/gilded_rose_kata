@@ -3,7 +3,7 @@ def update_quality(items)
     if item.name == 'Aged Brie' || item.name == 'Backstage passes to a TAFKAL80ETC concert'
       update_quality_for_antique(item)
     else
-      update_quality_for(item)
+      update_quality_for_item(item)
     end
     if item.name != 'Sulfuras, Hand of Ragnaros'
       item.sell_in -= 1
@@ -46,7 +46,7 @@ def update_quality_for_antique(item)
   end
 end
 
-def update_quality_for(item)
+def update_quality_for_item(item)
   if item.quality > 0
     if item.name != 'Sulfuras, Hand of Ragnaros'
       item.quality -= 1
