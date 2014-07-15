@@ -31,16 +31,8 @@ def update_quality_for_antique(item)
 end
 
 def update_quality_for_passes(item)
-  if item.sell_in < 11
-    if item.quality < 50
-      item.quality += 1
-    end
-  end
-  if item.sell_in < 6
-    if item.quality < 50
-      item.quality += 1
-    end
-  end
+  item.quality += 1 if item.sell_in < 11 && item.quality < 50
+  item.quality += 1 if item.sell_in < 6 && item.quality < 50
 end
 
 def update_quality_for_item(item)
