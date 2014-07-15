@@ -1,10 +1,6 @@
 def update_quality(items)
   items.each do |item|
-    if item.name == 'Aged Brie' || item.name == 'Backstage passes to a TAFKAL80ETC concert'
-      update_quality_for_antique(item)
-    else
-      update_quality_for_item(item)
-    end
+    update_quality_for(item)
     if item.name != 'Sulfuras, Hand of Ragnaros'
       item.sell_in -= 1
     end
@@ -25,6 +21,14 @@ def update_quality(items)
         end
       end
     end
+  end
+end
+
+def update_quality_for(item)
+  if item.name == 'Aged Brie' || item.name == 'Backstage passes to a TAFKAL80ETC concert'
+    update_quality_for_antique(item)
+  else
+    update_quality_for_item(item)
   end
 end
 
