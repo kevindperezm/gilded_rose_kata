@@ -38,7 +38,7 @@ def update_quality_for_item(item)
 end
 
 def update_sell_in_for(item)
-  item.sell_in -= 1 unless legendary?(item) 
+  item.sell_in -= 1 unless legendary?(item)
 end
 
 def legendary?(item)
