@@ -52,10 +52,14 @@ def update_quality_for_item(item)
 end
 
 def update_sell_in_for(item)
-  if item.name != 'Sulfuras, Hand of Ragnaros'
+  unless legendary?(item)
     item.sell_in -= 1
   end
   check_sell_in_constraints_for(item)
+end
+
+def legendary?(item)
+  item.name == SULFURAS_NAME
 end
 
 def check_sell_in_constraints_for(item)
