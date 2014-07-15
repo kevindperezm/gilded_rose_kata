@@ -24,9 +24,7 @@ end
 def update_quality_for_antique(item)
   if item.quality < 50
     item.quality += 1
-    if item.name == BACKSTAGE_PASSES_NAME
-      update_quality_for_passes(item)
-    end
+    update_quality_for_passes(item) if item.name == BACKSTAGE_PASSES_NAME
   end
 end
 
