@@ -1,3 +1,4 @@
+AGED_BRIE_NAME = 'Aged Brie'
 BACKSTAGE_PASSES_NAME = 'Backstage passes to a TAFKAL80ETC concert'
 
 def update_quality(items)
@@ -16,7 +17,7 @@ def update_quality_for(item)
 end
 
 def older_is_better_for?(item)
-  item.name == 'Aged Brie' || item.name == 'Backstage passes to a TAFKAL80ETC concert'
+  item.name == AGED_BRIE_NAME || item.name == BACKSTAGE_PASSES_NAME
 end
 
 def update_quality_for_antique(item)
