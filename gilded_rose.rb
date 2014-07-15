@@ -53,11 +53,15 @@ def check_constrainst_for(item)
     when AGED_BRIE_NAME
       update_quality_for_aged_brie(item)
     when PASSES_NAME
-      item.quality = item.quality - item.quality
+      adjust_quality_for_passes(item)
     else
       update_quality_for_item(item)
     end
   end
+end
+
+def adjust_quality_for_passes(passes)
+  passes.quality = passes.quality - passes.quality
 end
 
 def update_quality_for_aged_brie(brie)
