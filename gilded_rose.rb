@@ -25,9 +25,7 @@ end
 def update_quality_for_antique(antique)
   return unless antique.quality < 50
   antique.quality += 1
-  if antique.name == PASSES_NAME
-    update_quality_for_passes(antique)
-  end
+  update_quality_for_passes(antique) if antique.name == PASSES_NAME
 end
 
 def update_quality_for_passes(passes)
