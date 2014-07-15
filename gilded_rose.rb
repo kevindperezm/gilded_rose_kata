@@ -47,6 +47,10 @@ def update_sell_in_for(item)
   if item.name != 'Sulfuras, Hand of Ragnaros'
     item.sell_in -= 1
   end
+  check_sell_in_constraints_for(item)
+end
+
+def check_sell_in_constraints_for(item)
   if item.sell_in < 0
     if item.name != "Aged Brie"
       if item.name != 'Backstage passes to a TAFKAL80ETC concert'
