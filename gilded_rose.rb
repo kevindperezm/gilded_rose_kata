@@ -60,11 +60,13 @@ def check_constrainst_for(item)
         item.quality = item.quality - item.quality
       end
     else
-      if item.quality < 50
-        item.quality += 1
-      end
+      update_quality_for_aged_brie(item)
     end
   end
+end
+
+def update_quality_for_aged_brie(brie)
+  brie.quality += 1 if brie.quality < 50
 end
 
 # DO NOT CHANGE THINGS BELOW -----------------------------------------
