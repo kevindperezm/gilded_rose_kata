@@ -1,6 +1,8 @@
+AGED_BRIE_NAME = 'Aged Brie'
+
 def update_quality(items)
   items.each do |item|
-    if item.name == 'Aged Brie' || item.name == 'Backstage passes to a TAFKAL80ETC concert'
+    if item.name == AGED_BRIE_NAME || item.name == 'Backstage passes to a TAFKAL80ETC concert'
       if item.quality < 50
         item.quality += 1
         if item.name == 'Backstage passes to a TAFKAL80ETC concert'
