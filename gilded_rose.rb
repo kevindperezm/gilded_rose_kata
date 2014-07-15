@@ -49,14 +49,24 @@ def apply_constraints_to(item)
   return unless item.sell_in < 0
   case item.name
   when AGED_BRIE_NAME
-    if item.quality < 50
-      item.quality += 1
-    end
+    apply_constraints_for_aged_brie(item)
   when PASSES_NAME
-    item.quality = item.quality - item.quality
+    apply_constraints_for_passes(item)
   else
-    item.quality -= 1 if item.quality > 0 && !legendary?(item)     
+    apply_normal_constraints_to(item)
   end
+end
+
+def apply_constraints_for_aged_brie(brie)
+  brie.quality += 1 if brie.quality < 50
+end
+
+def apply_constraints_for_passes(passes)
+  passes.quality = passes.quality - passes.quality
+end
+
+def apply_normal_constraints_to(item)
+  item.quality -= 1 if item.quality > 0 && !legendary?(item)
 end
 
 # DO NOT CHANGE THINGS BELOW -----------------------------------------
