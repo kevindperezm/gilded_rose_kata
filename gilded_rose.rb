@@ -6,23 +6,7 @@ def update_quality(items)
   items.each do |item|
     update_quality_for(item)
     update_sell_in_for(item)
-    if item.sell_in < 0
-      if item.name != AGED_BRIE_NAME
-        if item.name != PASSES_NAME
-          if item.quality > 0
-            if item.name != SULFURAS_NAME
-              item.quality -= 1
-            end
-          end
-        else
-          item.quality = item.quality - item.quality
-        end
-      else
-        if item.quality < 50
-          item.quality += 1
-        end
-      end
-    end
+    apply_constraints_to(item)
   end
 end
 
@@ -55,6 +39,26 @@ end
 def update_sell_in_for(item)
   if item.name != SULFURAS_NAME
     item.sell_in -= 1
+  end
+end
+
+def apply_constraints_to(item)
+  if item.sell_in < 0
+    if item.name != AGED_BRIE_NAME
+      if item.name != PASSES_NAME
+        if item.quality > 0
+          if item.name != SULFURAS_NAME
+            item.quality -= 1
+          end
+        end
+      else
+        item.quality = item.quality - item.quality
+      end
+    else
+      if item.quality < 50
+        item.quality += 1
+      end
+    end
   end
 end
 
