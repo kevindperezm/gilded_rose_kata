@@ -3,11 +3,7 @@ def update_quality(items)
     if older_is_better_for?(item)
       update_quality_for_antique(item)
     else
-      if item.quality > 0
-        if item.name != 'Sulfuras, Hand of Ragnaros'
-          item.quality -= 1
-        end
-      end
+      update_quality_for(item)
     end
     if item.name != 'Sulfuras, Hand of Ragnaros'
       item.sell_in -= 1
@@ -50,6 +46,14 @@ def update_quality_for_antique(item)
           item.quality += 1
         end
       end
+    end
+  end
+end
+
+def update_quality_for(item)
+  if item.quality > 0
+    if item.name != 'Sulfuras, Hand of Ragnaros'
+      item.quality -= 1
     end
   end
 end
