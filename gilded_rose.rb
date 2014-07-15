@@ -5,9 +5,7 @@ PASSES_NAME = 'Backstage passes to a TAFKAL80ETC concert'
 def update_quality(items)
   items.each do |item|
     update_quality_for(item)
-    if item.name != SULFURAS_NAME
-      item.sell_in -= 1
-    end
+    update_sell_in_for(item)
     if item.sell_in < 0
       if item.name != AGED_BRIE_NAME
         if item.name != PASSES_NAME
@@ -52,6 +50,12 @@ def update_quality_for(item)
         end
       end
     end
+end
+
+def update_sell_in_for(item)
+  if item.name != SULFURAS_NAME
+    item.sell_in -= 1
+  end
 end
 
 # DO NOT CHANGE THINGS BELOW -----------------------------------------
