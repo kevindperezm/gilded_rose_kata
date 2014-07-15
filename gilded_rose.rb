@@ -1,10 +1,6 @@
 def update_quality(items)
   items.each do |item|
-    if older_is_better_for?(item)
-      update_quality_for_antique(item)
-    else
-      update_quality_for_item(item)
-    end
+    update_quality_for(item)
     update_sell_in(item)
     if has_reached_sell_date?(item)
       if item.name != "Aged Brie"
@@ -23,6 +19,14 @@ def update_quality(items)
         end
       end
     end
+  end
+end
+
+def update_quality_for(item)
+  if older_is_better_for?(item)
+    update_quality_for_antique(item)
+  else
+    update_quality_for_item(item)
   end
 end
 
