@@ -34,11 +34,11 @@ def update_quality_for_passes(item)
 end
 
 def update_quality_for_item(item)
-  item.quality -= 1 if item.quality > 0 && item.name != SULFURAS_NAME
+  item.quality -= 1 if item.quality > 0 && !legendary?(item)
 end
 
 def update_sell_in_for(item)
-  if item.name != SULFURAS_NAME
+  unless legendary?(item)
     item.sell_in -= 1
   end
   if item.sell_in < 0
@@ -58,6 +58,10 @@ def update_sell_in_for(item)
       end
     end
   end
+end
+
+def legendary?(item)
+  item.name == SULFURAS_NAME
 end
 
 # DO NOT CHANGE THINGS BELOW -----------------------------------------
