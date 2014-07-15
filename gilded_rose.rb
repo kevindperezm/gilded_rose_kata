@@ -1,5 +1,6 @@
 AGED_BRIE_NAME = 'Aged Brie'
 BACKSTAGE_PASSES_NAME = 'Backstage passes to a TAFKAL80ETC concert'
+SULFURAS_NAME = 'Sulfuras, Hand of Ragnaros'
 
 def update_quality(items)
   items.each do |item|
@@ -62,7 +63,7 @@ def check_sell_in_constraints_for(item)
     if item.name != AGED_BRIE_NAME
       if item.name != BACKSTAGE_PASSES_NAME
         if item.quality > 0
-          if item.name != 'Sulfuras, Hand of Ragnaros'
+          if item.name != SULFURAS_NAME
             item.quality -= 1
           end
         end
