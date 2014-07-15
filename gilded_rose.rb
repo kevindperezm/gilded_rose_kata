@@ -11,20 +11,17 @@ def update_quality(items)
 end
 
 def update_quality_for(item)
-  if item.name != AGED_BRIE_NAME && item.name != PASSES_NAME
-    update_quality_for_item(item)
-  else
+  if older_is_better_for?(item)
     update_quality_for_antique(item)
+  else
+    update_quality_for_item(item)
   end
 end
 
-def update_quality_for_item(item)
-  if item.quality > 0
-    if item.name != SULFURAS_NAME
-      item.quality -= 1
-    end
-  end
+def older_is_better_for?(item)
+  item.name == AGED_BRIE_NAME || item.name == PASSES_NAME
 end
+
 
 def update_quality_for_antique(item)
   if item.quality < 50
@@ -40,6 +37,14 @@ def update_quality_for_antique(item)
           item.quality += 1
         end
       end
+    end
+  end
+end
+
+def update_quality_for_item(item)
+  if item.quality > 0
+    if item.name != SULFURAS_NAME
+      item.quality -= 1
     end
   end
 end
