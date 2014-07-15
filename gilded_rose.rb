@@ -1,6 +1,6 @@
 def update_quality(items)
   items.each do |item|
-    if item.name == 'Aged Brie' || item.name == 'Backstage passes to a TAFKAL80ETC concert'
+    if older_is_better_for?(item)
       update_quality_for_antique(item)
     else
       if item.quality > 0
@@ -30,6 +30,10 @@ def update_quality(items)
       end
     end
   end
+end
+
+def older_is_better_for?(item)
+  item.name == 'Aged Brie' || item.name == 'Backstage passes to a TAFKAL80ETC concert'
 end
 
 def update_quality_for_antique(item)
