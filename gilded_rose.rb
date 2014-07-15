@@ -1,3 +1,5 @@
+BACKSTAGE_PASSES_NAME = 'Backstage passes to a TAFKAL80ETC concert'
+
 def update_quality(items)
   items.each do |item|
     update_quality_for(item)
@@ -20,7 +22,7 @@ end
 def update_quality_for_antique(item)
   if item.quality < 50
     item.quality += 1
-    if item.name == 'Backstage passes to a TAFKAL80ETC concert'
+    if item.name == BACKSTAGE_PASSES_NAME
       update_quality_for_backstage_passes(item)
     end
   end
