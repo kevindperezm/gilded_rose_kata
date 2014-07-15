@@ -25,11 +25,15 @@ def update_quality(items)
 end
 
 def update_quality_for(item)
-  if item.name == 'Aged Brie' || item.name == 'Backstage passes to a TAFKAL80ETC concert'
+  if older_is_better_for?(item) 
     update_quality_for_antique(item)
   else
     update_quality_for_item(item)
   end
+end
+
+def older_is_better_for?(item)
+  item.name == 'Aged Brie' || item.name == 'Backstage passes to a TAFKAL80ETC concert'
 end
 
 def update_quality_for_antique(item)
