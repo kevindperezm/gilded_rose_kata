@@ -6,6 +6,7 @@ def update_quality(items)
   items.each do |item|
     update_quality_for(item)
     update_sell_in_for(item)
+    check_constraints_for(item)
   end
 end
 
@@ -39,6 +40,13 @@ end
 
 def update_sell_in_for(item)
   item.sell_in -= 1 unless legendary?(item)
+end
+
+def legendary?(item)
+  item.name == SULFURAS_NAME
+end
+
+def check_constraints_for(item)
   if item.sell_in < 0
     if item.name != AGED_BRIE_NAME
       if item.name != BACKSTAGE_PASSES_NAME
@@ -56,10 +64,6 @@ def update_sell_in_for(item)
       end
     end
   end
-end
-
-def legendary?(item)
-  item.name == SULFURAS_NAME
 end
 
 # DO NOT CHANGE THINGS BELOW -----------------------------------------
