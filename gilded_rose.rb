@@ -38,9 +38,7 @@ def update_quality_for_item(item)
 end
 
 def update_sell_in_for(item)
-  unless legendary?(item)
-    item.sell_in -= 1
-  end
+  item.sell_in -= 1 unless legendary?(item)
   if item.sell_in < 0
     if item.name != AGED_BRIE_NAME
       if item.name != BACKSTAGE_PASSES_NAME
