@@ -34,13 +34,15 @@ def update_quality_for_passes(passes)
 end
 
 def update_quality_for_item(item)
-  item.quality -= 1 if item.quality > 0 && item.name != SULFURAS_NAME
+  item.quality -= 1 if item.quality > 0 && !legendary?(item)
 end
 
 def update_sell_in_for(item)
-  if item.name != SULFURAS_NAME
-    item.sell_in -= 1
-  end
+  item.sell_in -= 1 unless legendary?(item) 
+end
+
+def legendary?(item)
+  item.name == SULFURAS_NAME
 end
 
 def apply_constraints_to(item)
@@ -48,7 +50,7 @@ def apply_constraints_to(item)
     if item.name != AGED_BRIE_NAME
       if item.name != PASSES_NAME
         if item.quality > 0
-          if item.name != SULFURAS_NAME
+          unless legendary?(item)
             item.quality -= 1
           end
         end
