@@ -12,11 +12,7 @@ end
 
 def update_quality_for(item)
   if item.name != AGED_BRIE_NAME && item.name != PASSES_NAME
-    if item.quality > 0
-      if item.name != SULFURAS_NAME
-        item.quality -= 1
-      end
-    end
+    update_quality_for_item(item)
   else
     if item.quality < 50
       item.quality += 1
@@ -32,6 +28,14 @@ def update_quality_for(item)
           end
         end
       end
+    end
+  end
+end
+
+def update_quality_for_item(item)
+  if item.quality > 0
+    if item.name != SULFURAS_NAME
+      item.quality -= 1
     end
   end
 end
